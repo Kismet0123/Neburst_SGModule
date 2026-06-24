@@ -1,0 +1,11 @@
+#!name=Neburst 账户余额
+#!desc=Neburst OpenAPI 只读账户余额面板。不包含任何控制类功能。
+#!category=VPS监控
+#!arguments=api_key:必填,title:Neburst,interval:3600
+#!arguments-desc=api_key: [必填] Neburst Dashboard 生成的 combined Base64 API Key\ntitle: 面板标题前缀\ninterval: 自动刷新秒数
+
+[Panel]
+{{{title}}} 账户余额 = script-name=NeburstBalance, update-interval={{{interval}}}, timeout=30
+
+[Script]
+NeburstBalance = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&title={{{title}}}&mode=balance", timeout=20
