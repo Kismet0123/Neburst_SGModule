@@ -8,4 +8,4 @@
 {{{title}}} 综合监控 = script-name=NeburstSummary, update-interval={{{interval}}}, timeout=90
 
 [Script]
-NeburstSummary = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&id={{{id}}}&type={{{type}}}&title={{{title}}}&mode=summary&show_overview={{{show_overview}}}&show_traffic={{{show_traffic}}}&show_metrics={{{show_metrics}}}&show_balance={{{show_balance}}}", timeout=90
+NeburstSummary = type=generic, script-path=https://raw.githubusercontent.com/Kismet0123/Neburst_SGModule/refs/heads/main/Neburst_Monitor.js, argument="api_key={{{api_key}}}&id={{{id}}}&type={{{type}}}&title={{{title}}}&mode=summary&show_overview={{{show_overview}}}&show_traffic={{{show_traffic}}}&show_metrics={{{show_metrics}}}&show_balance={{{show_balance}}}", timeout=90
