@@ -1,0 +1,11 @@
+#!name=Neburst 资源监控
+#!desc=Neburst OpenAPI 只读资源面板。不包含任何控制类功能。
+#!category=VPS监控
+#!arguments=api_key:必填,id:必填,type:instance,title:Neburst,interval:300
+#!arguments-desc=api_key: [必填] Neburst Dashboard 生成的 combined Base64 API Key\nid: [必填] 实例 UUID\ntype: instance 或 bare-metal，默认 instance\ntitle: 面板标题前缀\ninterval: 自动刷新秒数
+
+[Panel]
+{{{title}}} 资源监控 = script-name=NeburstMetrics, update-interval={{{interval}}}, timeout=30
+
+[Script]
+NeburstMetrics = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&id={{{id}}}&type={{{type}}}&title={{{title}}}&mode=metrics", timeout=20
