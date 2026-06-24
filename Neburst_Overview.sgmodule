@@ -8,4 +8,4 @@
 {{{title}}} 实例概览 = script-name=NeburstOverview, update-interval={{{interval}}}, timeout=30
 
 [Script]
-NeburstOverview = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&id={{{id}}}&type={{{type}}}&title={{{title}}}&mode=overview", timeout=20
+NeburstOverview = type=generic, script-path=https://raw.githubusercontent.com/Kismet0123/Neburst_SGModule/refs/heads/main/Neburst_Monitor.js, argument="api_key={{{api_key}}}&id={{{id}}}&type={{{type}}}&title={{{title}}}&mode=overview", timeout=20
