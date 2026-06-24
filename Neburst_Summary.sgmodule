@@ -1,0 +1,11 @@
+#!name=Neburst 综合监控
+#!desc=Neburst OpenAPI 单面板综合展示，可用参数控制显示实例概览、流量、资源、余额。不包含任何控制类功能。
+#!category=VPS监控
+#!arguments=api_key:必填,id:可留空,type:instance,title:Neburst,interval:900,show_overview:true,show_traffic:true,show_metrics:true,show_balance:true
+#!arguments-desc=api_key: [必填] Neburst Dashboard 生成的 combined Base64 API Key\nid: [实例相关展示必填] 实例 UUID；只展示余额时可忽略\ntype: instance 或 bare-metal，默认 instance\ntitle: 面板标题前缀\ninterval: 自动刷新秒数\nshow_overview: 是否展示实例概览，true 或 false\nshow_traffic: 是否展示流量监控，true 或 false\nshow_metrics: 是否展示资源监控，true 或 false\nshow_balance: 是否展示账户余额，true 或 false
+
+[Panel]
+{{{title}}} 综合监控 = script-name=NeburstSummary, update-interval={{{interval}}}, timeout=90
+
+[Script]
+NeburstSummary = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&id={{{id}}}&type={{{type}}}&title={{{title}}}&mode=summary&show_overview={{{show_overview}}}&show_traffic={{{show_traffic}}}&show_metrics={{{show_metrics}}}&show_balance={{{show_balance}}}", timeout=90
