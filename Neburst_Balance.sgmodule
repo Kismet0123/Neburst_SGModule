@@ -8,4 +8,4 @@
 {{{title}}} 账户余额 = script-name=NeburstBalance, update-interval={{{interval}}}, timeout=30
 
 [Script]
-NeburstBalance = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&title={{{title}}}&mode=balance", timeout=20
+NeburstBalance = type=generic, script-path=https://raw.githubusercontent.com/Kismet0123/Neburst_SGModule/refs/heads/main/Neburst_Monitor.js, argument="api_key={{{api_key}}}&title={{{title}}}&mode=balance", timeout=20
