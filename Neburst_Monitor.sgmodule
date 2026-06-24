@@ -1,0 +1,17 @@
+#!name=Neburst 监控
+#!desc=Neburst OpenAPI 只读展示面板合集：实例概览、流量、资源、余额。不包含任何控制类功能。若只想展示部分面板，建议改用对应单面板模块。
+#!category=VPS监控
+#!arguments=api_key:必填,id:必填,type:instance,title:Neburst,overview_interval:1800,traffic_interval:600,metrics_interval:300,balance_interval:3600
+#!arguments-desc=api_key: [必填] Neburst Dashboard 生成的 combined Base64 API Key\nid: [实例面板必填] 实例 UUID；余额面板不使用\ntype: instance 或 bare-metal，默认 instance\ntitle: 面板标题前缀\noverview_interval: 实例概览刷新秒数\ntraffic_interval: 流量监控刷新秒数\nmetrics_interval: 资源监控刷新秒数\nbalance_interval: 账户余额刷新秒数
+
+[Panel]
+{{{title}}} 实例概览 = script-name=NeburstOverview, update-interval={{{overview_interval}}}, timeout=30
+{{{title}}} 流量监控 = script-name=NeburstTraffic, update-interval={{{traffic_interval}}}, timeout=30
+{{{title}}} 资源监控 = script-name=NeburstMetrics, update-interval={{{metrics_interval}}}, timeout=30
+{{{title}}} 账户余额 = script-name=NeburstBalance, update-interval={{{balance_interval}}}, timeout=30
+
+[Script]
+NeburstOverview = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&id={{{id}}}&type={{{type}}}&title={{{title}}}&mode=overview", timeout=20
+NeburstTraffic = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&id={{{id}}}&type={{{type}}}&title={{{title}}}&mode=traffic", timeout=20
+NeburstMetrics = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&id={{{id}}}&type={{{type}}}&title={{{title}}}&mode=metrics", timeout=20
+NeburstBalance = type=generic, script-path=Neburst_Monitor.js, argument="api_key={{{api_key}}}&title={{{title}}}&mode=balance", timeout=20
